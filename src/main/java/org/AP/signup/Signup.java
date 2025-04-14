@@ -3,11 +3,9 @@ package org.AP.signup;
 import java.io.IOException;
 import java.util.Scanner;
 
-import org.AP.display.Display;
 import org.AP.fileManager.FileManager;
 import org.AP.p.P;
 import org.AP.account.Account;
-import org.AP.song.Song;
 import org.AP.user.User;
 import org.AP.artist.Artist;
 import org.AP.admin.Admin;
@@ -64,10 +62,5 @@ public class Signup {
         CS.cs();
         P.ln("loading the main screen...");
         CS.cs();
-
-        Display display = new Display();
-        display.displayUser();
-        Song song1 = new Song("Imagine", "John Lennon", "Imagine", "Soft Rock", "Imagine there's no heaven...", 100000, 8000, 200);
-        display.displaySong(song1);
     }
 }

@@ -96,3 +96,8 @@ To run this program on your device, follow these steps:
 - Special thanks to **Kia** and **Mobin** for helping me in coding this programm:
   - [Kia](https://github.com/kia8506)
   - [Mobin](https://github.com/fermow)
+
+## Note
+
+- This code is tested and is fully functional on my laptop.
+- But it may just need more work and some features are not fully implemented.
