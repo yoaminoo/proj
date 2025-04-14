@@ -1,4 +1,4 @@
-package org.AP;
+package org.AP.p;
 
 public class P {
     public static void p(Object object) {

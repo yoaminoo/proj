@@ -1,7 +1,9 @@
-package org.AP;
+package org.AP.artist;
+
+import org.AP.account.Account;
 
 public class Artist extends Account {
-    public Artist(String role, String name, String username, String password, String Email, int age) {
-        super(role, name, username, password, Email, age);
+    public Artist(String role, String nameAndAge, String username, String password, String Email) {
+        super(role, nameAndAge, username, password, Email);
     }
 }

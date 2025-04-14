@@ -1,4 +1,4 @@
-package org.AP;
+package org.AP.login;
 
 import java.util.Scanner;
 
@@ -11,6 +11,6 @@ class Login {
         String password = scan.nextLine();
 
         // must call a meth from Account.java for checking the username and password
-        // and if they are correct show that mf page
+        // and if they are correct show that person page
     }
 }

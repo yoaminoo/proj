@@ -1,7 +1,24 @@
-package org.AP;
+package org.AP.user;
+
+import org.AP.account.Account;
+
+import java.util.ArrayList;
 
 public class User extends Account {
-    public User(String role, String name, String username, String password, String Email, int age) {
-        super(role, name, username, password, Email, age);
+    private ArrayList<String> followedArtists;
+
+    public User(String role, String nameAndAge, String username, String password, String Email) {
+        super(role, nameAndAge, username, password, Email);
+        followedArtists = new ArrayList<>();
+    }
+
+    public void addFollowedArtist(String artist){
+        if (!followedArtists.contains(artist)){
+            followedArtists.add(artist);
+        }
+    }
+
+    public ArrayList<String> getFollowedArtists(){
+        return followedArtists;
     }
 }
