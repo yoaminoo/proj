@@ -44,7 +44,7 @@ The application simulates a music platform where users can sign up as regular li
 
 The project is designed using modular packages to keep concerns separated and to follow clean OOP principles.
 
-There are **seven main packages** in the project—some are essential, like `Signup`, `Account`, `Song`, and `Display`, while others, such as `CS`, `P`, and `PrintObj`, help with functionality.
+There are **seven main packages** in the project—some are essential, like `Signup`, `Account`, `Song`, and `Display`, while others, such as `CS`, `P`, and `PrintObj`, help you code easier.
 
 ### **Package Overview**
 1. **Signup and Login**
@@ -93,6 +93,6 @@ To run this program on your device, follow these steps:
 
 - [Dr. Kheradpishe](https://github.com/SRKH) (Instructor)
 - [Ehsan Habibagaahi](https://github.com/Ehsan-Habibagahi) (Mentor)
-- Special thanks to **Kia** and **Mobin** for contributing to the development:
+- Special thanks to **Kia** and **Mobin** for helping me in coding this programm:
   - [Kia](https://github.com/kia8506)
   - [Mobin](https://github.com/fermow)
