@@ -79,6 +79,9 @@ public class Song {
     public int getLikes() {
         return likes;
     }
+    public int getDislikes() {
+        return dislikes;
+    }
 
     // setters
     public void setName(String name) {

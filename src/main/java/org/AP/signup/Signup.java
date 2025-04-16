@@ -1,8 +1,5 @@
 package org.AP.signup;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 import org.AP.fileManager.FileManager;
 import org.AP.p.P;
 import org.AP.account.Account;
@@ -11,6 +8,9 @@ import org.AP.artist.Artist;
 import org.AP.admin.Admin;
 import org.AP.printObject.PrintObj;
 import org.AP.clearScreen.CS;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Signup {
     public static void main(String[] args) throws IOException {
@@ -42,11 +42,11 @@ public class Signup {
         CS.cs();
         P.ln("enter your email: ");
         String email = scan.nextLine();
-//        while(!Account.checkEmail(email)) {
-//            CS.cs();
-//            P.ln("please enter a valid email address: ");
-//            email = scan.nextLine();
-//        }
+        while(!Account.checkEmail(email)) {
+            CS.cs();
+            P.ln("please enter a valid email address: ");
+            email = scan.nextLine();
+        }
 
         Account account = switch (role) {
             case "Artist" -> new Artist(role, nameAndAge, username, password, email);

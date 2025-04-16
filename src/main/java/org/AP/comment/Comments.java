@@ -2,12 +2,12 @@ package org.AP.comment;
 
 public class Comments {
     private String text;
-    private String username;
+    final private String username;
     private int like;
     private int dislike;
 
-    public Comments(String text, String username) {
-        this.username = username;
+    public Comments(String username, String text) {
+        this.username = this.getUsername();
         this.text = text;
         this.like = 0;
         this.dislike = 0;

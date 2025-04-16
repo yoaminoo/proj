@@ -43,6 +43,9 @@ public class Account {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+    public static String toString(Account account) {
+        return "name and age: " + account.getNameAndAge() + "\n" + "role :" + account.getRole() + "\n" + "username: " + account.getUsername() + "\n" + "password: " + account.getPassword() + "\n" + "E-mail: " + account.getEmail() + "\n" + "\"end of object\"";
+    }
 }
 
 

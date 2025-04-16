@@ -1,6 +1,9 @@
 package org.AP.display;
 
+import org.AP.artist.Artist;
 import org.AP.comment.Comments;
+import java.io.IOException;
+import org.AP.fileManager.FileManager;
 import org.AP.p.P;
 import org.AP.song.Song;
 
@@ -34,23 +37,31 @@ public class Display {
 
         songs.add(song1);songs.add(song2);songs.add(song3);songs.add(song4);songs.add(song5);
         songs.add(song6);songs.add(song7);songs.add(song8);songs.add(song9);songs.add(song10);
+
         songs.sort((s1, s2) -> s2.getViews() - s1.getViews());
 
-        P.ln("\t\t\"TOP SONGS\"");
-        for (int i = 0; i < songs.size(); i++) {
-            Song song = songs.get(i);
-            P.ln((i + 1) + ". " + song.getName() + " by " + song.getArtist() + " (Views: )" + song.getViews());
-        }
+        while(true) {
+            P.ln("\t\t\"TOP SONGS\"");
+            for (int i = 0; i < songs.size(); i++) {
+                Song song = songs.get(i);
+                P.ln((i + 1) + ". " + song.getName() + " by " + song.getArtist() + " (Views: )" + song.getViews());
+            }
 
-        P.ln("select a number to see more details (or enter 0 to exit): ");
-        int choice = Integer.parseInt(scan.nextLine());
-        while (choice < 0 || choice > songs.size()) {
-            P.ln("Please enter a number between 1 and " + (songs.size() - 1));
-            choice = Integer.parseInt(scan.nextLine());
+//        displaySongs(songs);
+
+            P.ln("select a number to see more details (or enter 0 to exit): ");
+            int choice = Integer.parseInt(scan.nextLine());
+            if (choice == 0) {
+                break;
+            }
+            while (choice < 0 || choice > songs.size()) {
+                P.ln("Please enter a number between 1 and " + (songs.size() - 1));
+                choice = Integer.parseInt(scan.nextLine());
+            }
+            Song s = songs.get(choice - 1);
+            s.addView();
+            displaySong(s);
         }
-        Song s = songs.get(choice - 1);
-        s.addView();
-        displaySong(s);
     }
     public void displaySong(Song song){
         Scanner scan = new Scanner(System.in);
@@ -63,7 +74,8 @@ public class Display {
             P.ln("3. leave a comment");
             P.ln("4. like the song");
             P.ln("5. dislike the song");
-            P.ln("6. exit the song list");
+            P.ln("6. Follow the artist");
+            P.ln("7. exit the song list");
             P.ln("enter your choice: ");
 
             String option = scan.nextLine();
@@ -91,6 +103,9 @@ public class Display {
                     P.ln("you disliked the song\n");
                     break;
                 case "6":
+//                    addFollowesArtist(song.getArtist());
+                    break;
+                case "7":
                     exitSongMenu = true;
                     break;
                 default:
@@ -98,7 +113,35 @@ public class Display {
             }
         }
     }
-    public void displayArtist(){}
+    public void displayArtist(Artist artist) {
+        Scanner scan = new Scanner(System.in);
+        boolean exitArtistMenu = false;
+        while (!exitArtistMenu) {
+            P.ln("what do you want to do?");
+            P.ln("1. add new song");
+            P.ln("2. exit song list");
+            P.ln("enter your choice: ");
+            String option = scan.nextLine();
+            switch (option) {
+                case "1":
+                    Song newSong = artist.newSong();
+                    try {
+                        FileManager.saveSong(newSong);
+                        P.ln("song created by: " + newSong.getArtist() + "saved successfully!");
+                        P.ln("new song's details: ");
+                        P.ln(newSong.toString());
+                    } catch (IOException e) {
+                        P.ln("Error saving song" + e.getMessage());
+                    }
+                    break;
+                case "2":
+                    exitArtistMenu = true;
+                    break;
+                default:
+                    P.ln("invalid option. Try again");
+            }
+        }
+    }
     public void displayAdmin(){}
     public void displayComments(ArrayList<Comments> comments){
         P.ln("comments: ");
@@ -107,6 +150,31 @@ public class Display {
         } else {
             for (Comments c : comments) {
                 P.ln(c.toString());
+            }
+        }
+        P.ln("Enter -1 to exit and enter the number of comments to like or dislike: ");
+        Scanner scan = new Scanner(System.in);
+        int choice1 = Integer.parseInt(scan.nextLine());
+        if (choice1 == -1) {
+            // do nothing
+        } else {
+            P.ln("Enter: ");
+            P.ln("1. like the comment");
+            P.ln("2. dislike the comment");
+
+            int choice2 = Integer.parseInt(scan.nextLine());
+
+            switch (choice2) {
+                case 1:
+                    comments.get(choice1).addLike();
+                    P.ln("you liked the" + choice1 + "th" + "comment!");
+                    break;
+                case 2:
+                    comments.get(choice1).addDislike();
+                    P.ln("you disliked the" + choice1 + "th" + "comment!");
+                    break;
+                default:
+                    P.ln("invalid option. Try again");
             }
         }
     }
