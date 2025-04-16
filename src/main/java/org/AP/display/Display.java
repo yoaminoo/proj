@@ -166,12 +166,12 @@ public class Display {
 
             switch (choice2) {
                 case 1:
-                    comments.get(choice1).addLike();
-                    P.ln("you liked the" + choice1 + "th" + "comment!");
+                    comments.get(choice1 - 1).addLike();
+                    P.ln("you liked the" + " " + choice1 + "th" + " " + "comment!");
                     break;
                 case 2:
                     comments.get(choice1).addDislike();
-                    P.ln("you disliked the" + choice1 + "th" + "comment!");
+                    P.ln("you disliked the" + " " + choice1 + "th" + " " + "comment!");
                     break;
                 default:
                     P.ln("invalid option. Try again");
