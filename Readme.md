@@ -87,7 +87,8 @@ To run this program on your device, follow these steps:
   - **3** to leave a comment (your username will be shown).
   - **4** to like the song.
   - **5** to dislike the song.
-  - **6** to exit the song list.
+  - **6** to follow the artist.
+  - **7** to exit the song list.
 
 ## Credits
 
